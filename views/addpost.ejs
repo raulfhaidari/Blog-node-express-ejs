@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+
+<div id="create-edit" class="my-5 min-vh-100" >
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <% if(locals.postId) { %>
+                <div class="content col-12 col-xxl-8 col-xl-8 p-4 p-4">
+                    <h1 class="pt-serif">Edit Post</h1>
+                    <form action="/update" method="POST">
+                        <input class="form-control dark-form my-4" type="text" name="title" placeholder="Title" value="<%= title %>" required>
+                        <textarea class="form-control dark-form" name="content" id="content" cols="30" rows="18" placeholder="Content" style="resize: none;"><%= content %></textarea>
+                        <input hidden type="text" name="index" value="<%= postId %>">
+                        <div class="text-end m-1">
+                            <input class="btn btn-light fs-5 btn-lg my-4 button-rad" type="submit" value="Publish">
+                        </div>
+                    </form>
+                </div>
+            <% } else { %>
+                <div class="content col-12 col-xxl-8 col-xl-8 p-4 p-4">
+                    <h1 class="pt-serif">Create Post</h1>
+                    <form action="/save" method="POST">
+                        <input type="text" name="title" placeholder="Title" id="title" class="form-control dark-form my-4">
+                        <textarea class="form-control dark-form" type="text" name="content" id="content" cols="30" rows="18" placeholder="Content" style="resize: none;"></textarea>
+                        <div class="text-end m-2">
+                            <input class="btn btn-light fs-5 bt-lg my-4 button-rad" type="submit" value="Publish">
+                        </div>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>
